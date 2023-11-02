@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Skeleton } from "@/components/ui/skeleton";
 import { api } from "@/convex/_generated/api";
 import { useMutation } from "convex/react";
 import { useRef, useState } from "react";
@@ -62,6 +63,10 @@ const Title = ({ initialData }) => {
       )}
     </div>
   );
+};
+
+Title.Skeleton = function TitleSkeleton() {
+  return <Skeleton className="h-9 w-20 rounded-sm" />;
 };
 
 export default Title;
