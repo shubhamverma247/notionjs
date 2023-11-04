@@ -7,6 +7,7 @@ import { api } from "@/convex/_generated/api";
 import { ImageIcon, Smile, X } from "lucide-react";
 import { useRef, useState } from "react";
 import { useMutation } from "convex/react";
+import { useCoverImage } from "@/hooks/use-cover-image";
 
 export const Toolbar = ({ initialData, preview }) => {
   const inputRef = useRef(null);
@@ -14,6 +15,7 @@ export const Toolbar = ({ initialData, preview }) => {
   const [value, setValue] = useState(initialData.title);
   const update = useMutation(api.documents.update);
   const removeIcon = useMutation(api.documents.removeIcon);
+  const coverImage = useCoverImage();
   const enableInput = () => {
     if (preview) return;
 
@@ -90,7 +92,7 @@ export const Toolbar = ({ initialData, preview }) => {
         )}
         {!initialData.coverImage && !preview && (
           <Button
-            onClick={() => {}}
+            onClick={coverImage.onOpen}
             className="text-muted-foreground text-xs"
             variant="outline"
             size="sm">
